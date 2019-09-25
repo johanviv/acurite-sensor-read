@@ -251,7 +251,7 @@ void loop() {
     else {
 //printf("%d ----- \n",temp);
  //     printf("Temperature: %.2f C  \n",(float)((temp-1024)/10+1.9+.5));
-      printf("Temperature: %.1f\n",(float)(temp * 0.1 - 100));
+      printf("Temperature: %.1f  -  ",(float)(temp * 0.1 - 100));
 //      printf("Temperature: %d C  %d F\n",(int)((temp-1024)/10+1.9+.5),(int)(((temp-1024)/10+1.9+0.5)*9/5+32));
     }
 
@@ -262,6 +262,31 @@ void loop() {
 	printf("\n");
  */   // delay for 1 second to avoid repetitions
 //    delay(10);
+
+   // print binary for debug purposes----------------------------------------------------------------------------
+//    unsigned int startIndex, stopIndex;
+    fail = false;
+    startIndex = (syncIndex1 + (0*8+0)*2) % RING_BUFFER_SIZE;
+    stopIndex =  (syncIndex1 + (6*8+8)*2) % RING_BUFFER_SIZE;
+
+    for(int i=startIndex; i!=stopIndex; i=(i+2)%RING_BUFFER_SIZE) {
+      int bit = t2b(timings[i], timings[(i+1)%RING_BUFFER_SIZE]);
+  printf("%d",bit);
+//      battery = (battery<<1) + bit;
+  //    if (bit < 0)  fail = true;
+    }
+	printf("\n");
+/*    if (fail) {printf("Decoding error.\n");}
+    else {
+    switch(battery) {
+                case 0 :
+                printf("Battery: normal,");
+                case 1 :
+                printf("Battery: normal,");
+        }
+    } */
+
+// END ---------------------------------------------------------------------------------------------------------------------
     received = false;
     syncIndex1 = 0;
     syncIndex2 = 0;
