@@ -14,3 +14,7 @@ c++ -std=c++0x humidity_display.cpp -o humidity_display.debug -lwiringPi
 
 
 you will need to install wiringPi for this to work
+
+11001100 01001000 01000100 11000011 00001001 10110111 11011011
+
+
