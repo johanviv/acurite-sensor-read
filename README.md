@@ -7,3 +7,10 @@ I am not a c++ coder and any stupidity or mistakes in the code was probably adde
 
 The main idea behind this is for me to learn how to use git (and c++) and to share the code with someone else that might find it useful.
 
+
+to compile:
+
+c++ -std=c++0x humidity_display.cpp -o humidity_display.debug -lwiringPi
+
+
+you will need to install wiringPi for this to work
